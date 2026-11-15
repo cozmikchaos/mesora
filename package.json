@@ -1,0 +1,12 @@
+{
+  "name": "mesora",
+  "version": "2.0.0",
+  "private": true,
+  "description": "NASA-informed agricultural water and crop-rotation planning",
+  "scripts": {
+    "dev": "node source/dev.mjs",
+    "start": "node source/dev.mjs",
+    "test": "node tests/rotation.cjs && node tests/server.mjs"
+  },
+  "engines": {"node": ">=22"}
+}
