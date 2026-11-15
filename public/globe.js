@@ -1,7 +1,7 @@
 /* MapLibre GL JS: BSD-3-Clause. Imagery credits remain visible on the globe. */
 window.MesoraGlobe={async mount(host,legacy,select,records){
  const gl=await import('./vendor/maplibre-gl.js');
- if(!host.isConnected)return;
+ gl.setWorkerUrl(new URL('vendor/maplibre-gl-worker.js',document.baseURI).href);if(!host.isConnected)return;
  const earth=new gl.Map({container:host,style:{version:8,sources:{earth:{type:'raster',tiles:['https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'],tileSize:256,maxzoom:19,attribution:'Imagery © Esri, Maxar, Earthstar Geographics'}},layers:[{id:'earth',type:'raster',source:'earth'}]},center:[-85,20],zoom:1.65,minZoom:0,maxZoom:18,canvasContextAttributes:{antialias:true}});
  earth.addControl(new gl.NavigationControl(),'top-left');
  const button=document.createElement('button');button.className='button small globe-reset';button.textContent='Whole Earth';host.append(button);button.onclick=()=>earth.flyTo({center:[-85,20],zoom:1.65,pitch:0});
