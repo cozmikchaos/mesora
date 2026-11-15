@@ -1,0 +1,28 @@
+name: Import MESORA release
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/import.yml'
+      - 'scripts/import-release.py'
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.repository == 'cozmikchaos/mesora'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import hash-verified application files
+        run: python3 scripts/import-release.py
+      - name: Test rotation engine and hosting adapters
+        run: npm test
+      - name: Commit complete application
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .gitignore README.md functions model netlify netlify.toml package.json public source tests worker wrangler.jsonc
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Import complete MESORA application and portable hosting configuration'
+          git push
