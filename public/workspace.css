@@ -6,3 +6,5 @@
 .map-stage{position:relative;background:#020e20}#earth-globe{position:absolute;inset:0;z-index:450;background:radial-gradient(ellipse at center,#15314e,#020811 75%)}#earth-globe .maplibregl-canvas{outline:none}.globe-reset{position:absolute;bottom:48px;right:14px;z-index:2}.map-toggle,.map-caption{z-index:500!important}.maplibregl-ctrl-attrib{font-size:10px}.maplibregl-map{font:inherit}
 
 #farm-map>.leaflet-control-container{visibility:hidden}.map-stage:has(#earth-globe[style*="hidden"]) #farm-map>.leaflet-control-container{visibility:visible}.globe-reset{bottom:65px}.maplibregl-popup-content{color:#123343;max-width:260px;padding:16px;border-radius:16px}.maplibregl-ctrl-top-left{top:10px;left:10px}
+
+.option-calendar small{line-height:1.6}.chart-value{display:block;min-height:28px;padding:8px;color:#0c655e;font-weight:600}.chart circle[tabindex]{cursor:pointer}.chart circle[tabindex]:hover,.chart circle[tabindex]:focus{fill:#10cfa0;stroke:#083c49;stroke-width:2;outline:none}.workspace-nav{flex-wrap:wrap}.scenario-grid ol{padding-left:20px}.scenario-grid li{padding:8px 0;line-height:1.6}
