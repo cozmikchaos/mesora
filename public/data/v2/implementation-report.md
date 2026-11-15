@@ -47,3 +47,11 @@ The North Carolina calendar is the demo reference. Nationwide map selection is s
 ## Reproduce locally
 
 From the mesora-site checkout: `node source/dev.mjs`, then open `http://127.0.0.1:8765/#explore`. The Union snapshot loads without external data calls; basemap/overlay tiles still use public remote services. To build the deployment worker: `python3 source/build.py`. Tests are in the workspace's `work/v2/test-rotation.cjs`.
+
+## Vercel submission repair
+
+The Vercel deployment now includes a Node API entry point and explicit `/api/*` rewrites. The previous portable release lacked this Vercel adapter, causing new-location requests to return an HTML missing-page response. The client checks response formats and can recover through a public read-only data bridge. Weather readiness is updated independently of slower monitoring requests, so an unrelated missing source does not block rotation calculations.
+
+Live Vercel checks: Berkeley County SC, Story County IA, and Fresno County CA each returned 4,018 daily NASA weather dates and station CSV responses. Soil requests returned mapped horizons in Berkeley/Fresno and no mapped rows at the tested Story point; absent coverage is not fabricated. Browser checks confirmed Berkeley crop-rotation generation and dated water-quality samples, and infrastructure scenarios using both entered demand and reported operator water totals.
+
+The Data centers view exposes source-linked records and operator-reported locality water totals. Report-derived demand can seed an explicitly labeled growth scenario. Sources is now a dataset-only view. Drawing a crossed click sequence can be repaired to an outer boundary with a review message; this area is approximate and must be checked on the map. Numerical inputs accept report-derived demand values rather than silently blocking form submission on integer-step validation.
