@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm test",
+  "outputDirectory": "public",
+  "functions": { "api/data.mjs": { "maxDuration": 60 } },
+  "rewrites": [ { "source": "/api/:endpoint", "destination": "/api/data?endpoint=:endpoint" } ],
+  "headers": [
+    { "source": "/(.*)", "headers": [ { "key": "X-Content-Type-Options", "value": "nosniff" } ] },
+    { "source": "/index.html", "headers": [ { "key": "Cache-Control", "value": "no-cache" } ] }
+  ]
+}

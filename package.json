@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "node source/dev.mjs",
     "start": "node source/dev.mjs",
-    "test": "node tests/rotation.cjs && node tests/server.mjs"
+    "test": "node tests/rotation.cjs && node tests/server.mjs && node tests/data-client.cjs"
   },
-  "engines": {"node": ">=22"}
+  "engines": {
+    "node": ">=22"
+  }
 }

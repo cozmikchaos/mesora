@@ -12,3 +12,10 @@ assert.equal((await worker.fetch(new Request('https://mesora.example/api/unknown
 const response=await worker.fetch(new Request('https://mesora.example/'),{ASSETS:{fetch:async()=>new Response('static asset')}});
 assert.equal(await response.text(),'static asset');
 console.log('PASS: portable hosting adapters, invalid inputs, and static asset routing.');
+const {default:vercel}=await import('../api/data.mjs');
+const output={headers:{},setHeader(k,v){this.headers[k]=v;},end(body){this.body=body;}};
+await vercel({url:'/api/data?endpoint=power&lat=999&lon=0',method:'GET'},output);
+assert.equal(output.statusCode,400);
+assert.equal(JSON.parse(output.body).error,'Invalid coordinates');
+assert.equal(output.headers['access-control-allow-origin'],'*');
+console.log('PASS: Vercel rewrite, JSON errors, and cross-origin public data access.');

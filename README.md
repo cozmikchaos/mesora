@@ -6,6 +6,8 @@ MESORA examines how climate and expanding infrastructure may affect agricultural
 
 ## Deploy a public website
 
+**Vercel:** import this repository with framework preset Other. The included `vercel.json` publishes `public/` and rewrites `/api/*` into `api/data.mjs`. Deployment runs `npm test` before publishing. This API route is required for locations outside the saved reference area.
+
 [Deploy MESORA to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/cozmikchaos/mesora)
 
 Connect this repository with your Netlify account. The included `netlify.toml` publishes `public/` and routes the data endpoints through a serverless function. The host assigns a public `*.netlify.app` address; viewers do not need accounts. A custom domain can be connected later. The site is not live on a new hosting address merely because this code is on GitHub.

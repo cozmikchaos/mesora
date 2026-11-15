@@ -13,3 +13,9 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/mesora/:splat"
+  status = 200
+  force = true
